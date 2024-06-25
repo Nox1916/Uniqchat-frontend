@@ -1,13 +1,13 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography, Container, TextField, Button, makeStyles } from '@material-ui/core';
-
+import { AppBar, Toolbar, Typography, Box, Container, TextField, Button, makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    backgroundColor: '#333', // Dark background color
+    backgroundColor: '#333', // Dark background color for the AppBar
   },
   toolbar: {
-    justifyContent: 'center', // Center the content
+    justifyContent: 'space-between', // Space between the title and button
+    padding: theme.spacing(2), // Add some padding
   },
   title: {
     color: 'teal', // Color of the text
@@ -19,7 +19,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center',
     minHeight: '100vh',
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#333', // Set the background color to dark grey
+    color: 'white', // Text color for contrast
     padding: theme.spacing(3),
   },
   form: {
@@ -28,6 +29,17 @@ const useStyles = makeStyles((theme) => ({
     gap: theme.spacing(2),
     width: '100%',
     maxWidth: '400px',
+  },
+  textField: {
+    '& .MuiInputBase-root': {
+      color: 'white', // Text color of input fields
+    },
+    '& .MuiFormLabel-root': {
+      color: 'white', // Text color of labels
+    },
+    '& .MuiOutlinedInput-notchedOutline': {
+      borderColor: 'white', // Border color of inputs
+    },
   },
   button: {
     marginTop: theme.spacing(2),
@@ -44,12 +56,26 @@ const Login = () => {
           <Typography variant="h3" className={classes.title}>
             Uniq Chat
           </Typography>
+          <Button color="inherit">Sign in</Button>
         </Toolbar>
       </AppBar>
       <Container className={classes.container}>
         <form className={classes.form}>
-          <TextField label="Username" variant="outlined" fullWidth />
-          <TextField label="Password" type="password" variant="outlined" fullWidth />
+          <TextField
+            className={classes.textField}
+            label="Username"
+            variant="outlined"
+            fullWidth
+            InputLabelProps={{ className: classes.textField }}
+          />
+          <TextField
+            className={classes.textField}
+            label="Password"
+            type="password"
+            variant="outlined"
+            fullWidth
+            InputLabelProps={{ className: classes.textField }}
+          />
           <Button variant="contained" color="primary" className={classes.button} fullWidth>
             Login
           </Button>

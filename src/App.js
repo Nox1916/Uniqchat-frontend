@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
+import chat from './components/chat';
+import login from './components/login';
 // Adjust import statements to use capitalized component names
 import Login from './components/login'; // Assuming './components/login' is correct path
 import Chat from './components/chat'; // Assuming './components/chat' is correct path
